@@ -148,5 +148,3 @@ task-app-sync/
 ```
 
 ---
-
-⭐ **Documentação completa disponível em [SETUP.md](SETUP.md)**
