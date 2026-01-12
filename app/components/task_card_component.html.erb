@@ -1,0 +1,76 @@
+<div class="max-w-2xl mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow"
+     data-controller="task-sync"
+     data-task-sync-url-value="<%= sync_tasks_path %>">
+
+  <div class="mb-4">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+      <%= task.title %>
+    </h5>
+    <span class="<%= task.completed ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' %> text-xs font-medium px-2.5 py-0.5 rounded">
+      <%= task.completed ? 'Concluída' : 'Pendente' %>
+    </span>
+  </div>
+
+  <div class="mb-4" data-task-sync-target="message" style="display: none;">
+    <div class="p-4 mb-4 text-sm rounded-lg" role="alert">
+      <span data-task-sync-target="messageText"></span>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="user-id-<%= task.id %>" class="block mb-2 text-sm font-medium text-gray-900">
+      User ID para sincronizar (1-10):
+    </label>
+    <input
+      type="number"
+      id="user-id-<%= task.id %>"
+      data-task-sync-target="userIdInput"
+      min="1"
+      max="10"
+      value="1"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      placeholder="Digite o ID do usuário (1-10)">
+  </div>
+
+  <div class="space-y-3 mb-4">
+    <div class="flex items-center">
+      <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
+      </svg>
+      <span class="text-sm text-gray-600">Nome: </span>
+      <span class="ml-2 text-sm font-semibold text-gray-900" data-task-sync-target="userName">
+        <%= task.external_user_name || 'Não sincronizado' %>
+      </span>
+    </div>
+
+    <div class="flex items-center">
+      <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4z"/>
+      </svg>
+      <span class="text-sm text-gray-600">Empresa: </span>
+      <span class="ml-2 text-sm font-semibold text-gray-900" data-task-sync-target="company">
+        <%= task.external_company || 'Não sincronizado' %>
+      </span>
+    </div>
+
+    <div class="flex items-center">
+      <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+      </svg>
+      <span class="text-sm text-gray-600">Cidade: </span>
+      <span class="ml-2 text-sm font-semibold text-gray-900" data-task-sync-target="city">
+        <%= task.external_city || 'Não sincronizado' %>
+      </span>
+    </div>
+  </div>
+
+  <button
+    data-action="click->task-sync#syncUser"
+    data-task-sync-target="syncButton"
+    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+    <svg data-task-sync-target="buttonIcon" class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+    </svg>
+    <span data-task-sync-target="buttonText">Sincronizar usuário</span>
+  </button>
+</div>

@@ -1,0 +1,12 @@
+<div class="container mx-auto py-8">
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-bold text-gray-900 mb-2">
+      Gerenciador de Tarefas
+    </h1>
+    <p class="text-gray-600">
+      Sincronize dados de usuários externos em tempo real
+    </p>
+  </div>
+
+  <%= render(TaskCardComponent.new(task: @task)) %>
+</div>
