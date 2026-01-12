@@ -119,10 +119,6 @@ make rspec
 - 3 testes do serviço UserSyncService
 ```
 
-## 📚 Documentação
-
-- **[SETUP.md](SETUP.md)** - Guia passo a passo completo
-- **[DOCKER.md](DOCKER.md)** - Guia completo Docker
 
 ## 🐳 Comandos Docker
 
@@ -133,8 +129,6 @@ make up            # Iniciar aplicação
 make test          # Executar testes
 make rspec         # RSpec formatado
 ```
-
-Ver documentação completa em [DOCKER.md](DOCKER.md)
 
 ## 📁 Estrutura do Projeto
 
